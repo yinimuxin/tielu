@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{$site.name}</title>
+    <link rel="shortcut icon" href="__CDN__/assets/img/favicon.ico"/>
+    <!-- Bootstrap Core CSS -->
+    <link href="__CDN__/assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__CDN__/assets/css/index.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="../../css/H-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../css/H-ui.admin.css" rel="stylesheet" type="text/css"/>
+    <link href="../../lib/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <style>
+
+        .search_area {
+            background-color: #EEf1f8;
+            height: 80px;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .search_area div {
+            float: left;
+            width: 20%;
+            margin-left: 5%;
+        }
+
+        .search_area input {
+            width: 60%;
+            margin-left: 10px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body id="page-top">
+<nav id="mainNav" class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">{$site.name}</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-menu">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{:url('/')}">{:__('Home')}</a></li>
+                <li><a href="{:url('index/user/index')}">{:__('Member center')}</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="pd-20" style="width: 90%;margin-left: 5%">
+    <form action="" method="post">
+        <div class="search_area">
+            <div>
+                出发地：
+                <select class="input-text" name="from">
+                    <option value="0">选择出发地</option>
+                    <?php
+                                foreach($areaList as $k =>$area){
+                    ?>
+                    <option value="<?php echo $k ?>" <?php if($k == $from){echo "selected";}  ?>> <?php echo $area ?></option>
+                    <?php
+                    }
+                    ?>
+
+                </select>
+            </div>
+            <div>
+                目的地：
+                <select class="input-text" name="to">
+                    <option value="0">选择出发地</option>
+                    <?php
+                                foreach($areaList as $k =>$area){
+                    ?>
+                        <option value="<?php echo $k ?>" <?php if($k == $to){echo "selected";}  ?>> <?php echo $area ?></option>
+                    <?php
+                    }
+                    ?>
+
+                </select>
+            </div>
+            <div>
+                日期：<input type="date" id="day" class="input-text" data-date-format="YYYY-MM-DD HH:mm" name="day" value="<?php echo $day; ?>">
+            </div>
+            <div>
+                <input type="submit" style="width: 50%" name="submit" value="搜索" class="input-text"/>
+            </div>
+        </div>
+    </form>
+    <table class="table table-border table-bordered table-hover table-bg table-sort">
+        <thead>
+        <tr class="text-c">
+            <!-- <th width="25"><input type="checkbox" name="" value=""></th> -->
+            <th width="80">列车号</th>
+            <th width="100">出发地</th>
+            <th width="40">目的地</th>
+            <th width="90">出发时间</th>
+            <th width="150">到达时间</th>
+            <th width="70">硬座</th>
+            <th width="70">硬卧</th>
+            <th width="50">票价</th>
+            <th width="100">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+                foreach($newArea as $k =>$area){
+        ?>
+        <tr class="text-c">
+            <td><?php echo $area["checi"] ?></td>
+            <td><?php echo $area["from"] ?></td>
+            <td><?php echo $area["to"] ?></td>
+            <td><?php echo $area["start"] ?></td>
+            <td><?php echo $area["end"] ?></td>
+            <td><?php echo $area["site"] ?></td>
+            <td><?php echo $area["no_site"] ?></td>
+            <td><?php echo $area["money"] ?></td>
+            <td class="inco-plus">
+               <p> <a style="text-decoration:none" class="btn-add"    href="/index/index/detail?type=2&id=<?php echo $area['id']; ?>" title="购票">硬座：预订
+                    </a>
+               </p>
+                <p>
+                    <a style="text-decoration:none" class="btn-add"    href="/index/index/detail?type=1&id=<?php echo $area['id']; ?>" title="购票">硬卧：预订
+                            </a>
+                </p>
+
+            </td>
+        </tr>
+        <?php
+                }
+         ?>
+
+        </tbody>
+    </table>
+
+</div>
+<script src="__CDN__/assets/libs/jquery/dist/jquery.min.js"></script>
+
+<script src="__CDN__/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

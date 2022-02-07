@@ -1,0 +1,58 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Relation_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-relation_id" data-rule="required" data-source="relation/index" class="form-control selectpage" name="row[relation_id]" type="text" value="{$row.relation_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Station_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-station_id" data-rule="required" data-source="station/index" class="form-control selectpage" name="row[station_id]" type="text" value="{$row.station_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Settype')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-settype" class="form-control" name="row[settype]" type="number" value="{$row.settype|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Setnumber')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-setnumber" class="form-control" name="row[setnumber]" type="number" value="{$row.setnumber|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-money" class="form-control" name="row[money]" type="number" value="{$row.money|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('User_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-user_id" data-rule="required" data-source="user/user/index" data-field="nickname" class="form-control selectpage" name="row[user_id]" type="text" value="{$row.user_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{:$row.create_time?datetime($row.create_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-status" class="form-control" name="row[status]" type="number" value="{$row.status|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

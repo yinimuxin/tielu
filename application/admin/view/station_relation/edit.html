@@ -1,0 +1,40 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('车次')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-station_id" data-rule="required" data-source="station/index" class="form-control selectpage" name="row[station_id]" type="text" value="{$row.station_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('发车时间')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[start_time]" type="text" value="{:$row.start_time?datetime($row.start_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('到站时间')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-end_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[end_time]" type="text" value="{:$row.end_time?datetime($row.end_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('发车站')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_station" data-rule="" data-source="area/index" data-field="name" class="form-control selectpage" name="row[start_station]" type="text" value="{$row.start_station|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('目的站')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-end_station" data-rule="" data-source="area/index" data-field="name" class="form-control selectpage" name="row[end_station]" type="text" value="{$row.end_station|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

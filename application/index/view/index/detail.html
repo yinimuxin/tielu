@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{$site.name}</title>
+    <link rel="shortcut icon" href="__CDN__/assets/img/favicon.ico"/>
+    <!-- Bootstrap Core CSS -->
+    <link href="__CDN__/assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__CDN__/assets/css/index.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="../../css/H-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../css/H-ui.admin.css" rel="stylesheet" type="text/css"/>
+    <link href="../../lib/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .person{
+            border-radius: 10px;
+            border:1px solid red;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .station{
+            border-radius: 10px;
+            border:1px solid red;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .ext{
+            border-radius: 10px;
+            border:1px solid red;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        .set-button{
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+        }
+        .set-button button{
+            width: 200px;
+            height: 50px;
+        }
+        .search_area div {
+            float: left;
+            width: 20%;
+            margin-left: 5%;
+        }
+
+        .search_area input {
+            width: 60%;
+            margin-left: 10px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body id="page-top">
+<nav id="mainNav" class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">{$site.name}</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-menu">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{:url('/')}">{:__('Home')}</a></li>
+                <li><a href="{:url('index/user/index')}">{:__('Member center')}</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="pd-20" style="width: 40%;margin-left: 25%;">
+    <form action="add_person" method="post" >
+        <input type="hidden" name="relation_id" value="<?php echo $info['id']; ?>">
+        <input type="hidden" name="settype" value="<?php echo $info['settype']; ?>">
+        <input type="hidden" name="setnumber" value="<?php echo $info['setnumber2']; ?>">
+        <input type="hidden" name="money" value="<?php echo $info['money']; ?>">
+        <input type="hidden" name="station_id" value="<?php echo $info['station_id']; ?>">
+        <div class="station">
+            <h3 style="text-align: center">列车信息</h3>
+            <p class="todate">
+                <span><?php echo date("Y-m-d",$info["day"]); ?></span>
+            </p>
+            <p>
+                <span><?php echo $info["stationinfo"]["name"]; ?></span>
+            </p>
+            <p class="area">
+                <span><?php echo $info["fromarea"]["name"]; ?></span>
+                <span>----------------------------------></span>
+                <span><?php echo $info["toarea"]["name"]; ?></span>
+            </p>
+        </div>
+        <div class="ext">
+            <h3 style="text-align: center">详细信息</h3>
+            <p>
+                <span>发车时间：<?php echo date("Y-m-d",$info["start_time"]); ?></span>
+            </p>
+            <p class="setin">
+                <span class="setnumber">座位：<?php echo $info["setnumber"]; ?></span>
+            </p>
+            <p class="money">
+                <span class="money">价格：￥<?php echo $info["money"]; ?></span>
+            </p>
+        </div>
+        <div class="person">
+            <h3 style="text-align: center">乘客信息</h3>
+            <p class="username">姓名：<?php echo $user["username"]; ?></p>
+            <p class="mobile">手机号：<?php echo $user["mobile"]; ?></p>
+            <p class="idcard">身份证号：<?php echo $user["idcard"]; ?></p>
+        </div>
+        <div class="set-button">
+            <button type="submit">购票</button>
+        </div>
+    </form>
+    <div class="set-button">
+        <a href="/index/index/index"><button>取消</button></a>
+    </div>
+
+
+
+
+
+</div>
+<script src="__CDN__/assets/libs/jquery/dist/jquery.min.js"></script>
+
+<script src="__CDN__/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
